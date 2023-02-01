@@ -49,7 +49,7 @@ void InitUi(HWND hWnd)
 	io.Fonts->AddFontFromFileTTF(FontPath, FontSize, nullptr, io.Fonts->GetGlyphRangesJapanese());
 
 	//ImGuiスタイルの設定
-	ImGui::StyleColorsDark();
+	ImGui::StyleColorsLight();
 
 	//プラットフォーム/レンダラーとバックエンドの設定
 	ImGui_ImplWin32_Init(hWnd);
@@ -94,7 +94,7 @@ void UpdateUi()
 
 	//エフェクトウィンドウの生成
 	ImGui::Begin(u8"パーティクルツール");
-
+	
 	//発生原点
 
 	//発生原点誤差

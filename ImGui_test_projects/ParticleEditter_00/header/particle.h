@@ -9,6 +9,17 @@
 #include "main.h"
 
 //==========================================
+//  描画モードの列挙型定義
+//==========================================
+typedef enum
+{
+	DRAWMODE_NULL = 0, //デフォルト描画
+	DRAWMODE_ADD, //加算合成
+	DRAWMODE_SAD, //減算合成
+	DRAWMODE_MAX
+}DRAWMODE;
+
+//==========================================
 //  パーティクル構造体定義
 //==========================================
 typedef struct
@@ -42,6 +53,7 @@ typedef struct
 	float fGravity; //重力
 	bool bLoop; //ループon/off
 	bool bCollision; //当たり判定
+	DRAWMODE drawmode; //描画モード
 
 	//形状
 	/*

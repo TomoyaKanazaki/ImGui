@@ -1,0 +1,12 @@
+﻿  camera.cpp
+  effect.cpp
+  main.cpp
+  particle.cpp
+  ui.cpp
+  コード生成しています。
+  57 of 1500 functions ( 3.8%) were compiled, the rest were copied from previous compilation.
+    0 functions were new in current compilation
+    9 functions had inline decision re-evaluated but remain unchanged
+  コード生成が終了しました。
+  ParticleEditter_00.vcxproj -> C:\Users\student\Desktop\Github\imgui\ImGui_test_projects\ParticleEditter_00\ParticleEditter_00.exe
+  ParticleEditter_00.vcxproj -> C:\Users\student\Desktop\Github\imgui\ImGui_test_projects\ParticleEditter_00\ParticleEditter_00.pdb (Full PDB)

@@ -15,15 +15,8 @@ void InitUi(HWND hWnd);
 void UninitUi(void);
 void UpdateUi(void);
 void DrawUi(void);
-//エフェクト
-D3DXCOLOR GetColorData(void);
-int GetNumData(void);
-int GetLifeData(void);
-float GetRadiusData(void);
-D3DXVECTOR3 GetMoveData(void);
-D3DXVECTOR3 GetAngleData(void);
-D3DXVECTOR3 GetPosData(void);
-D3DXVECTOR2 GetAngle(void);
+//パーティクル
+
 //カメラ
 D3DXVECTOR3 GetPosV(void);
 D3DXVECTOR3 GetPosR(void);

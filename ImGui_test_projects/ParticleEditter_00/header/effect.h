@@ -1,6 +1,6 @@
 //==========================================
 //
-//  エフェクトの制御(effect.h)
+//  エフェクトの処理(effect.h)
 //  Author : Tomoya Kanazaki
 //
 //==========================================
@@ -9,13 +9,49 @@
 #include "main.h"
 
 //==========================================
+//  マクロ定義
+//==========================================
+#define MAX_TEXT (128) //パスの最大文字数
+
+//==========================================
+//  列挙型定義
+//==========================================
+typedef enum
+{
+	DRAWMODE_DEFAULT = 0, //デフォルトの描画
+	DRAWMODE_ADD, //加算合成
+	DRAWMODE_SAD, //減算合成
+	DRAWMODE_MAX
+}DRAWMODE;
+
+//==========================================
+//  構造体定義
+//==========================================
+typedef struct
+{
+	D3DXVECTOR3 pos; //発生原点
+	D3DXVECTOR3 move; //移動量
+	D3DXVECTOR3 moveAcceleration; //加速度
+	D3DXVECTOR3 size; //ポリゴンサイズ
+	D3DXVECTOR3 magnification; //ポリゴンサイズ拡大率
+	D3DXVECTOR3 rot; //ポリゴン角度
+	D3DXVECTOR3 rotateSpeed; //回転角度
+	D3DXCOLOR colorStart; //初期カラー
+	D3DXCOLOR colorEnd; //最終カラー
+	int nLife; //寿命
+	float fGravity; //重力
+	bool bCollision; //当たり判定
+	DRAWMODE drawmode; //描画モード
+	char texturePass[128]; //テクスチャパス
+}EFFECT;
+
+//==========================================
 //  プロトタイプ宣言
 //==========================================
 void InitEffect(void);
 void UninitEffect(void);
 void UpdateEffect(void);
 void DrawEffect(void);
-void SetEffect(D3DXVECTOR3 pos, float fGravity = 0.0f);
-int GetEffectNum(void);
+void SetEffect(EFFECT effectdata);
 
 #endif

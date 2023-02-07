@@ -8,7 +8,6 @@
 #include "main.h"
 #include "ui.h"
 #include "camera.h"
-#include "effect.h"
 #include "light.h"
 
 //==========================================
@@ -317,9 +316,6 @@ HRESULT Init(HINSTANCE hInstance, HWND hWnd, BOOL bWindow)
 	//ライトの初期化
 	InitLight();
 
-	//エフェクトの初期化
-	InitEffect();
-
 	return S_OK;
 }
 
@@ -338,9 +334,6 @@ void Uninit(void)
 
 	//ライトの終了
 	UninitLight();
-
-	//エフェクトの終了
-	UninitEffect();
 
 	//デバッグ用フォントの破棄
 	if (g_pFont != NULL)
@@ -377,16 +370,6 @@ void Update(void)
 
 	//ライトの更新
 	UpdateLight();
-
-	//エフェクトの更新
-	UpdateEffect();
-
-	//エフェクトの呼び出し
-	SetEffect
-	(
-		D3DXVECTOR3(0.0f, 0.0f, 0.0f),
-		300
-	);
 }
 
 //==========================================
@@ -411,15 +394,8 @@ void Draw(void)
 		//カメラの設定
 		SetCamera();
 
-		//エフェクトの描画
-		DrawEffect();
-
-#ifdef _DEBUG
-
-		//imguiの描画
+		//UIの描画
 		DrawUi();
-
-#endif //_DEBUG
 
 		//描画終了
 		g_pD3DDevice->EndScene();

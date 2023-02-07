@@ -5,20 +5,12 @@
 //
 //==========================================
 #include "ui.h"
-#include "particle.h"
+#include "effect.h"
 
 //==========================================
 //  グローバル変数宣言
 //==========================================
 //エフェクト管理変数
-ImVec4 g_clear_color; //発生するエフェクトの色
-D3DXVECTOR3 g_move; //移動量
-D3DXVECTOR3 g_angle; //発射基準角
-D3DXVECTOR3 g_pos; //発生原点
-D3DXVECTOR2 g_angle_; //拡散角
-static int g_nNumFrame; //1フレーム間に発生するエフェクトの数
-static int g_nLife; //エフェクトの寿命
-static float g_Radius; //エフェクトの半径
 
 //カメラ管理変数
 D3DXVECTOR3 g_posV; //視点位置
@@ -56,15 +48,7 @@ void InitUi(HWND hWnd)
 	ImGui_ImplDX9_Init(pDevice);
 
 	//変数の初期化
-	//エフェクト管理変数
-	g_clear_color = ImVec4(1.0f, 1.0f, 1.0f, 1.00f);
-	g_move = D3DXVECTOR3(25.0f, 25.0f, 25.0f);
-	g_angle = D3DXVECTOR3(0.0f, 0.0f, 0.0f);
-	g_pos = D3DXVECTOR3(0.0f, 0.0f, 0.0f);
-	g_angle_ = D3DXVECTOR2(629.0f, 0.0f);
-	g_nNumFrame = 25;
-	g_nLife = 25;
-	g_Radius = 25.0f;
+
 	//カメラ管理変数
 	g_posV = D3DXVECTOR3(0.0f, 0.0f, -1000.0f);
 	g_posR = D3DXVECTOR3(0.0f, 0.0f, 0.0f);
@@ -92,53 +76,13 @@ void UpdateUi()
 	ImGui_ImplWin32_NewFrame();
 	ImGui::NewFrame();
 
-	//エフェクトウィンドウの生成
+	//パーティクルウィンドウの生成
 	ImGui::Begin(u8"パーティクルツール");
-	
-	//発生原点
 
-	//発生原点誤差
+	//エフェクトの使用数を表示
+	//ImGui::Text(u8"Using Effect Num : [ &d ]", GetEffectNum());
 
-	//パーティクルライフ
-
-	//エフェクトライフ
-
-	//ループon/off
-
-	//初期速度
-
-	//初期速度誤差
-
-	//初期サイズ
-
-	//初期角度(ポリゴン)
-
-	//初期回転速度(ポリゴン)
-
-	//初期カラー
-
-	//重力
-
-	//当たり判定
-
-	//形状
-	/*
-		選択式
-		選択内容によって別ウィンドウを表示
-		形状ごとのステータスを設定する
-	*/
-	
-	//最終速度
-
-	//最終サイズ
-
-	//最終角度(ポリゴン)
-
-	//最終回転速度(ポリゴン)
-
-	//最終カラー
-
-	//エフェクトウィンドウの終了
+	//パーティクルウィンドウの終了
 	ImGui::End();
 
 	//カメラウィンドウの生成
@@ -172,91 +116,6 @@ void DrawUi()
 
 	//ライティングをオン
 	pDevice->SetRenderState(D3DRS_LIGHTING, TRUE);
-}
-
-//==========================================
-//  色情報の取得
-//==========================================
-D3DXCOLOR GetColorData()
-{
-	//ローカル変数
-	D3DXCOLOR colorData;
-
-	//値の変換
-	colorData.r = g_clear_color.x;
-	colorData.g = g_clear_color.y;
-	colorData.b = g_clear_color.z;
-	colorData.a = g_clear_color.w;
-
-	//値を返す
-	return colorData;
-}
-
-//==========================================
-//  数情報の取得
-//==========================================
-int GetNumData()
-{
-	return g_nNumFrame;
-}
-
-//==========================================
-//  寿命情報の取得
-//==========================================
-int GetLifeData()
-{
-	return g_nLife;
-}
-
-//==========================================
-//  半径の取得
-//==========================================
-float GetRadiusData()
-{
-	return g_Radius;
-}
-
-//==========================================
-//  移動量の取得
-//==========================================
-D3DXVECTOR3 GetMoveData()
-{
-	return g_move;
-}
-
-//==========================================
-//  拡散角情報取得
-//==========================================
-D3DXVECTOR3 GetAngleData()
-{
-	//ローカル変数宣言
-	D3DXVECTOR3 angle = D3DXVECTOR3
-	(
-		D3DXToRadian(g_angle.x),
-		D3DXToRadian(g_angle.y),
-		D3DXToRadian(g_angle.z)
-	);
-
-	return angle;
-}
-
-//==========================================
-//  拡散角情報の取得
-//==========================================
-D3DXVECTOR2 GetAngle()
-{
-	//返り値の設定
-	g_angle_.y = (g_angle_.x - 1.0f) * 0.5f;
-
-	return g_angle_;
-}
-
-//==========================================
-//  発生原点情報の取得
-//==========================================
-D3DXVECTOR3 GetPosData()
-{
-	return g_pos;
 }
 
 //==========================================

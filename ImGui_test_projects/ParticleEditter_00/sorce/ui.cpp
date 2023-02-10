@@ -79,9 +79,6 @@ void UpdateUi()
 	//パーティクルウィンドウの生成
 	ImGui::Begin(u8"パーティクルツール");
 
-	//エフェクトの使用数を表示
-	//ImGui::Text(u8"Using Effect Num : [ &d ]", GetEffectNum());
-
 	//パーティクルウィンドウの終了
 	ImGui::End();
 

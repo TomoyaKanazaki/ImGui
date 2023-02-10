@@ -41,8 +41,10 @@ typedef struct
 	int nLife; //寿命
 	float fGravity; //重力
 	bool bCollision; //当たり判定
+	bool bUse; //使用/不使用
 	DRAWMODE drawmode; //描画モード
 	char texturePass[128]; //テクスチャパス
+	D3DXMATRIX mtxWorld; //ワールドマトリックス
 }EFFECT;
 
 //==========================================

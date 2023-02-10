@@ -99,6 +99,12 @@ void DrawEffect()
 				pDevice->SetRenderState(D3DRS_BLENDOP, D3DBLENDOP_ADD);
 				pDevice->SetRenderState(D3DRS_SRCBLEND, D3DBLEND_SRCALPHA);
 				pDevice->SetRenderState(D3DRS_DESTBLEND, D3DBLEND_ONE);
+				break;
+			case DRAWMODE_SAD: //Œ¸ŽZ‡¬
+				pDevice->SetRenderState(D3DRS_BLENDOP, D3DBLENDOP_REVSUBTRACT);
+				pDevice->SetRenderState(D3DRS_SRCBLEND, D3DBLEND_SRCALPHA);
+				pDevice->SetRenderState(D3DRS_DESTBLEND, D3DBLEND_ONE);
+				break;
 			default: //‚È‚µ
 				pDevice->SetRenderState(D3DRS_BLENDOP, D3DBLENDOP_ADD);
 				pDevice->SetRenderState(D3DRS_SRCBLEND, D3DBLEND_SRCALPHA);

@@ -157,6 +157,7 @@
     <ClInclude Include="header\effect.h" />
     <ClInclude Include="header\light.h" />
     <ClInclude Include="header\main.h" />
+    <ClInclude Include="header\particle.h" />
     <ClInclude Include="header\ui.h" />
     <ClInclude Include="imgui\imconfig.h" />
     <ClInclude Include="imgui\imgui.h" />
@@ -185,6 +186,7 @@
     <ClCompile Include="sorce\effect.cpp" />
     <ClCompile Include="sorce\light.cpp" />
     <ClCompile Include="sorce\main.cpp" />
+    <ClCompile Include="sorce\particle.cpp" />
     <ClCompile Include="sorce\polygon.cpp" />
     <ClCompile Include="sorce\ui.cpp" />
   </ItemGroup>

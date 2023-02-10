@@ -34,8 +34,6 @@ typedef struct
 	D3DXVECTOR3 moveAcceleration; //加速度
 	D3DXVECTOR3 size; //ポリゴンサイズ
 	D3DXVECTOR3 magnification; //ポリゴンサイズ拡大率
-	D3DXVECTOR3 rot; //ポリゴン角度
-	D3DXVECTOR3 rotateSpeed; //回転角度
 	D3DXCOLOR colorStart; //初期カラー
 	D3DXCOLOR colorEnd; //最終カラー
 	int nLife; //寿命

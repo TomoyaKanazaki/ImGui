@@ -1,2 +1,3 @@
 ﻿  particle.cpp
-LINK : fatal error LNK1104: ファイル 'C:\Users\student\Desktop\Github\imgui\ImGui_test_projects\ParticleEditter_00\Debug\ParticleEditter_00.exe' を開くことができません。
+  ParticleEditter_00.vcxproj -> C:\Users\student\Desktop\Github\imgui\ImGui_test_projects\ParticleEditter_00\Debug\ParticleEditter_00.exe
+  ParticleEditter_00.vcxproj -> C:\Users\student\Desktop\Github\imgui\ImGui_test_projects\ParticleEditter_00\Debug\ParticleEditter_00.pdb (Full PDB)

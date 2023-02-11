@@ -5,38 +5,92 @@
 //
 //==========================================
 #include "particle.h"
-#include "effect.h"
 
 //==========================================
-//  パーティクル構造体定義
+//  マクロ定義
 //==========================================
-typedef struct
+#define MAX_PARTICLE (32) //パーティクル最大数
+
+//==========================================
+//  グローバル変数宣言
+//==========================================
+PARTICLE g_aParticle[MAX_PARTICLE];
+
+//==========================================
+//  初期化処理
+//==========================================
+void InitParticle()
 {
-	D3DXVECTOR3 pos; //発生原点
-	D3DXVECTOR3 posError; //発生原点誤差
-	D3DXVECTOR3 move; //移動量
-	D3DXVECTOR3 moveError; //移動量誤差
-	D3DXVECTOR3 acceleration; //加速度
-	D3DXVECTOR3 accelerationError; //加速度誤差
-	D3DXVECTOR3 size; //ポリゴンサイズ
-	D3DXVECTOR3 sizeError; //ポリゴンサイズ誤差
-	D3DXVECTOR3 magnification; //拡大率
-	D3DXVECTOR3 magnificationError; //拡大率誤差
-	D3DXVECTOR3 rot; //角度
-	D3DXVECTOR3 rotError; //角度誤差
-	D3DXVECTOR3 rotSpeed; //回転速度
-	D3DXVECTOR3 rotSpeedError; //回転角度
-	D3DXCOLOR colStart; //初期カラー
-	D3DXCOLOR colStartError; //初期カラー誤差
-	D3DXCOLOR colEnd; //最終カラー
-	D3DXCOLOR colEndError; //最終カラー誤差
-	int nLife; //パーティクルの寿命
-	int nNumEffect; //1F毎の発生数
-	float fGravity; //重力の値
-	bool bLoop; //ループの切り替え
-	bool bCollision; //当たり判定の切り替え
-	DRAWMODE drawmode; //ドローモード
-	EFFECT effectinfo; //エフェクトデータ
-}PARTICLE;
+	//変数の初期化
+	ZeroMemory(&g_aParticle[0], sizeof(PARTICLE) * MAX_PARTICLE);
+	
+	//不使用状態に初期化する
+	for (int nCnt = 0; nCnt < MAX_PARTICLE; nCnt++)
+	{
+		g_aParticle[nCnt].bUse = false;
+	}
+}
 
 //==========================================
+//  終了処理
+//==========================================
+void UninitParticle()
+{
+
+}
+
+//==========================================
+//  更新処理
+//==========================================
+void UpdateParticle()
+{
+
+}
+
+//==========================================
+//  描画処理
+//==========================================
+void DrawParticle()
+{
+
+}
+
+//==========================================
+//  設定処理
+//==========================================
+void SetParticle
+(
+	D3DXVECTOR3 pos,
+	D3DXVECTOR3 move,
+	//D3DXVECTOR3 acceleration,
+	D3DXVECTOR3 size,
+	//D3DXVECTOR3 magnification,
+	int nLife,
+	int nNumEffect,
+	bool bLoop
+)
+{
+	//パーティクルの設定
+	for (int nCnt = 0; nCnt < MAX_PARTICLE; nCnt++)
+	{
+		if (g_aParticle[nCnt].bUse == false)
+		{
+			//原点の設定
+			g_aParticle[nCnt].effectinfo.pos = pos;
+
+			//移動量の設定
+			g_aParticle[nCnt].effectinfo.move = move;
+
+			//大きさの設定
+			g_aParticle[nCnt].effectinfo.size = size;
+
+			//寿命の設定
+			g_aParticle[nCnt].nLife = nLife;
+
+			//使用状態を切り替え
+			g_aParticle[nCnt].bUse = true;
+
+			break;
+		}
+	}
+}

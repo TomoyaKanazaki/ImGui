@@ -37,11 +37,10 @@ typedef struct
 	D3DXCOLOR colorStart; //初期カラー
 	D3DXCOLOR colorEnd; //最終カラー
 	int nLife; //寿命
+	int nDrawmode; //描画モード
 	float fGravity; //重力
 	bool bCollision; //当たり判定
 	bool bUse; //使用/不使用
-	DRAWMODE drawmode; //描画モード
-	char texturePass[128]; //テクスチャパス
 	D3DXMATRIX mtxWorld; //ワールドマトリックス
 }EFFECT;
 
@@ -53,5 +52,6 @@ void UninitEffect(void);
 void UpdateEffect(void);
 void DrawEffect(void);
 void SetEffect(EFFECT effectdata);
+int GetEffectNum(void);
 
 #endif

@@ -6,11 +6,13 @@
 //==========================================
 #include "ui.h"
 #include "effect.h"
+#include "particle.h"
 
 //==========================================
 //  グローバル変数宣言
 //==========================================
-//エフェクト管理変数
+//パーティクル管理変数
+PARTICLE g_particle;
 
 //カメラ管理変数
 D3DXVECTOR3 g_posV; //視点位置
@@ -35,7 +37,7 @@ void InitUi(HWND hWnd)
 	const float FontSize = 15.0f;
 	
 	//文字の設定
-	ImGuiIO& io = ImGui::GetIO();
+	ImGuiIO & io = ImGui::GetIO();
 
 	//io.Fonts->AddFontDefault();
 	io.Fonts->AddFontFromFileTTF(FontPath, FontSize, nullptr, io.Fonts->GetGlyphRangesJapanese());
@@ -48,9 +50,16 @@ void InitUi(HWND hWnd)
 	ImGui_ImplDX9_Init(pDevice);
 
 	//変数の初期化
+	ZeroMemory(&g_particle, sizeof(PARTICLE));
+	g_particle.pos = D3DXVECTOR3(0.0f, 0.0f, 0.0f);
+	g_particle.colStart = D3DXCOLOR(1.0f, 1.0f, 1.0f, 1.0f);
+	g_particle.nLife = 10;
+	g_particle.size = D3DXVECTOR3(1.0f, 1.0f, 1.0f);
+	g_particle.nEffectLife = 10;
+	g_particle.nNumEffect = 10;
 
 	//カメラ管理変数
-	g_posV = D3DXVECTOR3(0.0f, 0.0f, -1000.0f);
+	g_posV = D3DXVECTOR3(0.0f, 0.0f, 1000.0f);
 	g_posR = D3DXVECTOR3(0.0f, 0.0f, 0.0f);
 
 }
@@ -79,6 +88,51 @@ void UpdateUi()
 	//パーティクルウィンドウの生成
 	ImGui::Begin(u8"パーティクルツール");
 
+	//発生位置の設定
+	ImGui::DragFloat3(u8"発生位置", g_particle.pos);
+
+	//移動量の設定
+	ImGui::DragFloat3(u8"移動量", g_particle.move);
+
+	//サイズの設定
+	ImGui::DragFloat3(u8"サイズ", g_particle.size);
+
+	//寿命の設定
+	ImGui::InputInt(u8"パーティクル寿命の設定", &g_particle.nLife);
+
+	//寿命の設定
+	ImGui::InputInt(u8"エフェクト寿命の設定", &g_particle.nEffectLife);
+
+	//発生数の設定
+	ImGui::InputInt(u8"発生数の設定", &g_particle.nNumEffect);
+
+	//初期カラーの設定
+	ImGui::ColorEdit4(u8"初期カラーの設定", g_particle.colStart);
+
+	//ループのオンオフ
+	ImGui::Checkbox(u8"ループ", &g_particle.bLoop);
+
+	//描画モードの設定
+	ImGui::RadioButton(u8"加算合成", &g_particle.nDrawmode, DRAWMODE_ADD); ImGui::SameLine();
+	ImGui::RadioButton(u8"減算合成", &g_particle.nDrawmode, DRAWMODE_SAD); ImGui::SameLine();
+	ImGui::RadioButton(u8"合成なし", &g_particle.nDrawmode, DRAWMODE_DEFAULT);
+
+	//パーティクルを発生させる
+	if (ImGui::Button("SetParticle"))
+	{
+		SetParticle
+		(
+			g_particle.pos,
+			g_particle.move,
+			g_particle.size,
+			g_particle.colStart,
+			g_particle.nLife,
+			g_particle.nEffectLife,
+			g_particle.nNumEffect,
+			g_particle.nDrawmode,
+			g_particle.bLoop);
+	}
+
 	//パーティクルウィンドウの終了
 	ImGui::End();
 
@@ -88,6 +142,18 @@ void UpdateUi()
 	//視点の操作
 	ImGui::DragFloat3("posV", (float*)&g_posV);
 	ImGui::DragFloat3("posR", (float*)&g_posR);
+
+	//カメラウィンドウの終了
+	ImGui::End();
+
+	//デバッグウィンドウの生成
+	ImGui::Begin(u8"デバッグ表示");
+
+	//エフェクトの使用数を表示
+	ImGui::Text("EffectNum = %d", GetEffectNum());
+
+	//パーティクルの使用数を表示
+	ImGui::Text("ParticleNum = %d", GetParticleNum());
 
 	//エフェクトウィンドウの終了
 	ImGui::End();

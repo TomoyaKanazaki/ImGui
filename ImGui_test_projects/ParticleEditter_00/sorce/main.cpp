@@ -9,6 +9,9 @@
 #include "ui.h"
 #include "camera.h"
 #include "light.h"
+#include "effect.h"
+#include "particle.h"
+#include "test.h"
 
 //==========================================
 //  グローバル変数宣言
@@ -316,6 +319,15 @@ HRESULT Init(HINSTANCE hInstance, HWND hWnd, BOOL bWindow)
 	//ライトの初期化
 	InitLight();
 
+	//エフェクトの初期化
+	InitEffect();
+
+	//パーティクルの初期化
+	InitParticle();
+
+	//
+	InitTest();
+
 	return S_OK;
 }
 
@@ -334,6 +346,15 @@ void Uninit(void)
 
 	//ライトの終了
 	UninitLight();
+
+	//エフェクトの終了
+	UninitEffect();
+
+	//パーティクルの終了
+	UninitParticle();
+
+	//
+	UninitTest();
 
 	//デバッグ用フォントの破棄
 	if (g_pFont != NULL)
@@ -370,6 +391,15 @@ void Update(void)
 
 	//ライトの更新
 	UpdateLight();
+
+	//エフェクトの更新
+	UpdateEffect();
+
+	//パーティクルの更新
+	UpdateParticle();
+
+	//
+	UpdateTest();
 }
 
 //==========================================
@@ -394,8 +424,17 @@ void Draw(void)
 		//カメラの設定
 		SetCamera();
 
+		//エフェクトの描画
+		DrawEffect();
+
+		//パーティクルの描画
+		DrawParticle();
+
 		//UIの描画
 		DrawUi();
+
+		//
+		DrawTest();
 
 		//描画終了
 		g_pD3DDevice->EndScene();

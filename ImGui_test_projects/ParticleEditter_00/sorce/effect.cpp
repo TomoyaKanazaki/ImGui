@@ -10,7 +10,7 @@
 //==========================================
 //  マクロ定義
 //==========================================
-#define MAX_EFFECT (1024) //エフェクトの最大値
+#define MAX_EFFECT (2048) //エフェクトの最大値
 
 //==========================================
 //  グローバル変数宣言
@@ -25,6 +25,10 @@ void InitEffect()
 {
 	//変数の初期化
 	ZeroMemory(&g_aEffect[0], sizeof(EFFECT) * MAX_EFFECT);
+	for (int nCnt = 0; nCnt < MAX_EFFECT; nCnt++)
+	{
+		g_aEffect[nCnt].nDrawmode = DRAWMODE_DEFAULT;
+	}
 
 	//ポリゴンの初期化
 	g_pVtxBuffEffect = Init_3D_Polygon(MAX_EFFECT);
@@ -54,12 +58,12 @@ void UpdateEffect()
 			g_aEffect[nCnt].pos += g_aEffect[nCnt].move;
 
 			//寿命の減少
-			g_aEffect[nCnt].nLife--;
 			if (g_aEffect[nCnt].nLife <= 0)
 			{
 				//不使用に設定
-				g_aEffect[nCnt].bUse;
+				g_aEffect[nCnt].bUse = false;
 			}
+			g_aEffect[nCnt].nLife--;
 		}
 	}
 }
@@ -93,7 +97,7 @@ void DrawEffect()
 		if (g_aEffect[nCnt].bUse)
 		{
 			//アルファブレンディングを設定
-			switch (g_aEffect[nCnt].drawmode)
+			switch (g_aEffect[nCnt].nDrawmode)
 			{
 			case DRAWMODE_ADD: //加算合成
 				pDevice->SetRenderState(D3DRS_BLENDOP, D3DBLENDOP_ADD);
@@ -145,21 +149,22 @@ void DrawEffect()
 			//ポリゴンの描画
 			pDevice->DrawPrimitive(D3DPT_TRIANGLESTRIP, nCnt * 4, 2);
 		}
+
+		//アルファテストの無効化
+		pDevice->SetRenderState(D3DRS_ALPHATESTENABLE, FALSE);
+		pDevice->SetRenderState(D3DRS_ALPHAFUNC, D3DCMP_ALWAYS);
+		pDevice->SetRenderState(D3DRS_ALPHAREF, 0);
+
+		//Zテストの有効化
+		pDevice->SetRenderState(D3DRS_ZFUNC, D3DCMP_LESSEQUAL);
+		pDevice->SetRenderState(D3DRS_ZWRITEENABLE, TRUE);
+
+		//アルファブレンディングをの設定を元に戻す
+		pDevice->SetRenderState(D3DRS_BLENDOP, D3DBLENDOP_ADD);
+		pDevice->SetRenderState(D3DRS_SRCBLEND, D3DBLEND_SRCALPHA);
+		pDevice->SetRenderState(D3DRS_DESTBLEND, D3DBLEND_INVSRCALPHA);
+
 	}
-
-	//アルファテストの無効化
-	pDevice->SetRenderState(D3DRS_ALPHATESTENABLE, FALSE);
-	pDevice->SetRenderState(D3DRS_ALPHAFUNC, D3DCMP_ALWAYS);
-	pDevice->SetRenderState(D3DRS_ALPHAREF, 0);
-
-	//Zテストの有効化
-	pDevice->SetRenderState(D3DRS_ZFUNC, D3DCMP_LESSEQUAL);
-	pDevice->SetRenderState(D3DRS_ZWRITEENABLE, TRUE);
-
-	//アルファブレンディングをの設定を元に戻す
-	pDevice->SetRenderState(D3DRS_BLENDOP, D3DBLENDOP_ADD);
-	pDevice->SetRenderState(D3DRS_SRCBLEND, D3DBLEND_SRCALPHA);
-	pDevice->SetRenderState(D3DRS_DESTBLEND, D3DBLEND_INVSRCALPHA);
 
 	//ライティングを有効化する
 	pDevice->SetRenderState(D3DRS_LIGHTING, TRUE);
@@ -178,22 +183,25 @@ void SetEffect(EFFECT effectdata)
 
 	for (int nCnt = 0; nCnt < MAX_EFFECT; nCnt++)
 	{
-		if (g_aEffect[nCnt].bUse)
+		if (g_aEffect[nCnt].bUse == false)
 		{
 			//エフェクトデータを設定する
 			g_aEffect[nCnt] = effectdata;
 
 			//頂点座標を設定
-			pVtx[0].pos = D3DXVECTOR3(-g_aEffect[nCnt].size.x, -g_aEffect[nCnt].size.y, 0.0f);
-			pVtx[1].pos = D3DXVECTOR3(g_aEffect[nCnt].size.x, -g_aEffect[nCnt].size.y, 0.0f);
-			pVtx[2].pos = D3DXVECTOR3(-g_aEffect[nCnt].size.x, g_aEffect[nCnt].size.y, 0.0f);
-			pVtx[3].pos = D3DXVECTOR3(g_aEffect[nCnt].size.x, g_aEffect[nCnt].size.y, 0.0f);
+			pVtx[0].pos = D3DXVECTOR3(-g_aEffect[nCnt].size.x, g_aEffect[nCnt].size.y, 0.0f);
+			pVtx[1].pos = D3DXVECTOR3(g_aEffect[nCnt].size.x, g_aEffect[nCnt].size.y, 0.0f);
+			pVtx[2].pos = D3DXVECTOR3(-g_aEffect[nCnt].size.x, -g_aEffect[nCnt].size.y, 0.0f);
+			pVtx[3].pos = D3DXVECTOR3(g_aEffect[nCnt].size.x, -g_aEffect[nCnt].size.y, 0.0f);
 
 			//頂点カラーを設定
 			for (int nCnt = 0; nCnt < 4; nCnt++)
 			{
 				pVtx[nCnt].col = g_aEffect[nCnt].colorStart;
 			}
+
+			//使用設定
+			g_aEffect[nCnt].bUse = true;
 
 			break;
 		}
@@ -203,4 +211,24 @@ void SetEffect(EFFECT effectdata)
 
 	//頂点バッファをアンロック
 	g_pVtxBuffEffect->Unlock();
+}
+
+//==========================================
+//  エフェクトの使用数を取得
+//==========================================
+int GetEffectNum()
+{
+	//ローカル変数宣言
+	int nNum = 0;
+
+	//使用数のカウント
+	for (int nCnt = 0; nCnt < MAX_EFFECT; nCnt++)
+	{
+		if (g_aEffect[nCnt].bUse)
+		{
+			nNum++;
+		}
+	}
+
+	return nNum;
 }

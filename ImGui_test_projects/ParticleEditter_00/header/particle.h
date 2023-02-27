@@ -29,12 +29,13 @@ typedef struct
 	D3DXCOLOR colEnd; //最終カラー
 	D3DXCOLOR colEndError; //最終カラー誤差
 	int nLife; //パーティクルの寿命
+	int nEffectLife; //エフェクトの寿命
 	int nNumEffect; //1F毎の発生数
+	int nDrawmode; //ドローモード
 	float fGravity; //重力の値
 	bool bUse; //使用不使用の設定
 	bool bLoop; //ループの切り替え
 	bool bCollision; //当たり判定の切り替え
-	DRAWMODE drawmode; //ドローモード
 	EFFECT effectinfo; //エフェクトデータ
 }PARTICLE;
 
@@ -52,9 +53,13 @@ void SetParticle
 	//D3DXVECTOR3 acceleration,
 	D3DXVECTOR3 size,
 	//D3DXVECTOR3 magnification,
+	D3DXCOLOR colStart,
 	int nLife,
+	int nEffectLife,
 	int nNumEffect,
+	int nDrawmode,
 	bool bLoop
 );
+int GetParticleNum(void);
 
 #endif

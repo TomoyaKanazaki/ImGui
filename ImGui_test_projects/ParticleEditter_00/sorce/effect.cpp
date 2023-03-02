@@ -195,9 +195,9 @@ void SetEffect(EFFECT effectdata)
 			pVtx[3].pos = D3DXVECTOR3(g_aEffect[nCnt].size.x, -g_aEffect[nCnt].size.y, 0.0f);
 
 			//頂点カラーを設定
-			for (int nCnt = 0; nCnt < 4; nCnt++)
+			for (int nCntVtx = 0; nCntVtx < 4; nCntVtx++)
 			{
-				pVtx[nCnt].col = g_aEffect[nCnt].colorStart;
+				pVtx[nCntVtx].col = g_aEffect[nCnt].colorStart;
 			}
 
 			//使用設定

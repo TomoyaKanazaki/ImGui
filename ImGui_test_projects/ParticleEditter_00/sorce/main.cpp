@@ -11,7 +11,7 @@
 #include "light.h"
 #include "effect.h"
 #include "particle.h"
-#include "test.h"
+#include "texture.h"
 
 //==========================================
 //  グローバル変数宣言
@@ -310,6 +310,9 @@ HRESULT Init(HINSTANCE hInstance, HWND hWnd, BOOL bWindow)
 	//乱数シードの設定
 	srand((unsigned int)time(0));
 
+	//テクスチャの初期化
+	InitTexture();
+
 	//imguiの初期化
 	InitUi(hWnd);
 
@@ -325,9 +328,6 @@ HRESULT Init(HINSTANCE hInstance, HWND hWnd, BOOL bWindow)
 	//パーティクルの初期化
 	InitParticle();
 
-	//
-	InitTest();
-
 	return S_OK;
 }
 
@@ -337,6 +337,9 @@ HRESULT Init(HINSTANCE hInstance, HWND hWnd, BOOL bWindow)
 void Uninit(void)
 {
 	//各種オブジェクトの終了処理
+
+	//テクスチャの終了
+	UninitTexture();
 
 	//imguiの終了
 	UninitUi();
@@ -352,9 +355,6 @@ void Uninit(void)
 
 	//パーティクルの終了
 	UninitParticle();
-
-	//
-	UninitTest();
 
 	//デバッグ用フォントの破棄
 	if (g_pFont != NULL)
@@ -397,9 +397,6 @@ void Update(void)
 
 	//パーティクルの更新
 	UpdateParticle();
-
-	//
-	UpdateTest();
 }
 
 //==========================================
@@ -432,9 +429,6 @@ void Draw(void)
 
 		//UIの描画
 		DrawUi();
-
-		//
-		DrawTest();
 
 		//描画終了
 		g_pD3DDevice->EndScene();

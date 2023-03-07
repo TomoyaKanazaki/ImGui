@@ -13,6 +13,7 @@
 //==========================================
 //パーティクル管理変数
 PARTICLE g_particle;
+int g_ListItemCurrent;
 
 //カメラ管理変数
 D3DXVECTOR3 g_posV; //視点位置
@@ -57,6 +58,7 @@ void InitUi(HWND hWnd)
 	g_particle.size = D3DXVECTOR3(1.0f, 1.0f, 1.0f);
 	g_particle.nEffectLife = 10;
 	g_particle.nNumEffect = 10;
+	g_ListItemCurrent = 0;
 
 	//カメラ管理変数
 	g_posV = D3DXVECTOR3(0.0f, 0.0f, 1000.0f);
@@ -108,6 +110,9 @@ void UpdateUi()
 
 	//初期カラーの設定
 	ImGui::ColorEdit4(u8"初期カラーの設定", g_particle.colStart);
+
+	//テクスチャの設定
+	ImGui::ListBox(u8"テクスチャの設定", &g_particle.effectinfo.nTexPass, c_apTextureName, EFFECTTEX_MAX, EFFECTTEX_MAX);
 
 	//ループのオンオフ
 	ImGui::Checkbox(u8"ループ", &g_particle.bLoop);

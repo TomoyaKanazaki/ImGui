@@ -82,6 +82,12 @@ void UpdateParticle()
 					g_aParticle[nCnt].effectinfo.move.z = 0;
 				}
 
+				//エフェクトの移動量を補正
+				D3DXVec3Normalize(&g_aParticle[nCnt].effectinfo.move, &g_aParticle[nCnt].effectinfo.move);
+				g_aParticle[nCnt].effectinfo.move.x *= g_aParticle[nCnt].move.x;
+				g_aParticle[nCnt].effectinfo.move.y *= g_aParticle[nCnt].move.y;
+				g_aParticle[nCnt].effectinfo.move.z *= g_aParticle[nCnt].move.z;
+
 				//エフェクトの大きさの設定
 				g_aParticle[nCnt].effectinfo.size = g_aParticle[nCnt].size;
 	

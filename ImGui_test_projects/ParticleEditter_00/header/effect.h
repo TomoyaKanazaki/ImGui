@@ -22,7 +22,7 @@ typedef enum
 	DRAWMODE_ADD, //加算合成
 	DRAWMODE_SAD, //減算合成
 	DRAWMODE_MAX
-}DRAWMODE;
+}DRAWMODE; //描画モード
 
 //==========================================
 //  構造体定義
@@ -42,6 +42,7 @@ typedef struct
 	bool bCollision; //当たり判定
 	bool bUse; //使用/不使用
 	D3DXMATRIX mtxWorld; //ワールドマトリックス
+	int nTexPass; //テクスチャパス
 }EFFECT;
 
 //==========================================

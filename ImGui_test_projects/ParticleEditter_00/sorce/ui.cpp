@@ -68,6 +68,7 @@ void InitUi(HWND hWnd)
 	g_particle.size = D3DXVECTOR3(1.0f, 1.0f, 1.0f);
 	g_particle.nEffectLife = 10;
 	g_particle.nNumEffect = 10;
+	g_particle.effectinfo.nTexPass = TEXTURE_EFFECT_DEFAULT;
 	g_ListItemCurrent = 0;
 
 	//カメラ管理変数
@@ -145,7 +146,9 @@ void UpdateUi()
 			g_particle.nEffectLife,
 			g_particle.nNumEffect,
 			g_particle.nDrawmode,
-			g_particle.bLoop);
+			g_particle.effectinfo.nTexPass,
+			g_particle.bLoop
+		);
 	}
 
 	//パーティクルウィンドウの終了

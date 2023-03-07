@@ -23,6 +23,6 @@ typedef enum
 //==========================================
 void InitTexture(void);
 void UninitTexture(void);
-LPDIRECT3DTEXTURE9 GetTexture(TEXTURE_LABEL TextureLabel);
+LPDIRECT3DTEXTURE9 GetTexture(int TextureLabel);
 
 #endif

@@ -50,14 +50,13 @@ void SetParticle
 (
 	D3DXVECTOR3 pos,
 	D3DXVECTOR3 move,
-	//D3DXVECTOR3 acceleration,
 	D3DXVECTOR3 size,
-	//D3DXVECTOR3 magnification,
 	D3DXCOLOR colStart,
 	int nLife,
 	int nEffectLife,
 	int nNumEffect,
 	int nDrawmode,
+	int nTexPass,
 	bool bLoop
 );
 int GetParticleNum(void);

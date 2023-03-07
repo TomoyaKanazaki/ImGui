@@ -6,6 +6,7 @@
 //==========================================
 #include "effect.h"
 #include "polygon.h"
+#include "texture.h"
 
 //==========================================
 //  マクロ定義
@@ -28,6 +29,7 @@ void InitEffect()
 	for (int nCnt = 0; nCnt < MAX_EFFECT; nCnt++)
 	{
 		g_aEffect[nCnt].nDrawmode = DRAWMODE_DEFAULT;
+		g_aEffect[nCnt].nTexPass = TEXTURE_EFFECT_DEFAULT;
 	}
 
 	//ポリゴンの初期化
@@ -144,7 +146,7 @@ void DrawEffect()
 			pDevice->SetFVF(FVF_VERTEX_3D);
 
 			//テクスチャの設定
-			pDevice->SetTexture(0, NULL);
+			pDevice->SetTexture(0, GetTexture(g_aEffect[nCnt].nTexPass));
 
 			//ポリゴンの描画
 			pDevice->DrawPrimitive(D3DPT_TRIANGLESTRIP, nCnt * 4, 2);

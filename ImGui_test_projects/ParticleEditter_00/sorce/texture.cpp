@@ -59,7 +59,7 @@ void UninitTexture()
 //==========================================
 //  テクスチャの取得
 //==========================================
-LPDIRECT3DTEXTURE9 GetTexture(TEXTURE_LABEL TextureLabel)
+LPDIRECT3DTEXTURE9 GetTexture(int TextureLabel)
 {
 	return g_pTexture[TextureLabel];
 }

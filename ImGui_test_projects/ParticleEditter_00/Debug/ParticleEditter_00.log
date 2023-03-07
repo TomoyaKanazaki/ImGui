@@ -1,9 +1,2 @@
-﻿  effect.cpp
-  コードを生成中...
-  コンパイル中...
-  ui.cpp
-c:\users\student\desktop\github\imgui\imgui_test_projects\particleeditter_00\sorce\ui.cpp(115): error C2065: 'c_apTextureName': 定義されていない識別子です。
-c:\users\student\desktop\github\imgui\imgui_test_projects\particleeditter_00\sorce\ui.cpp(115): error C2065: 'EFFECTTEX_MAX': 定義されていない識別子です。
-  particle.cpp
-  main.cpp
-  コードを生成中...
+﻿  ParticleEditter_00.vcxproj -> C:\Users\student\Desktop\Github\imgui\ImGui_test_projects\ParticleEditter_00\Debug\ParticleEditter_00.exe
+  ParticleEditter_00.vcxproj -> C:\Users\student\Desktop\Github\imgui\ImGui_test_projects\ParticleEditter_00\Debug\ParticleEditter_00.pdb (Full PDB)

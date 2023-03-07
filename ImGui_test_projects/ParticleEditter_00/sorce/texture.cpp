@@ -11,8 +11,9 @@
 //==========================================
 const char *c_pTextureFilePass[TEXTURE_MAX] =
 {
-	"data/TEXTURE/effect_000.jpg" //エフェクトでデフォルトに使うテクスチャ
-};
+	"data/TEXTURE/effect_000.jpg", //エフェクトでデフォルトに使うテクスチャ
+	"data/TEXTURE/effect_001.jpg" //エフェクトに使う四角のテクスチャ
+}; //テクスチャパス
 
 //==========================================
 //  グローバル変数宣言
@@ -56,7 +57,7 @@ void UninitTexture()
 }
 
 //==========================================
-//  テクスチャの取得処理
+//  テクスチャの取得
 //==========================================
 LPDIRECT3DTEXTURE9 GetTexture(TEXTURE_LABEL TextureLabel)
 {

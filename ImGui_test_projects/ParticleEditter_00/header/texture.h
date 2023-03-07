@@ -14,6 +14,7 @@
 typedef enum
 {
 	TEXTURE_EFFECT_DEFAULT = 0, //エフェクトに使用するデフォルトのもの
+	TEXTURE_EFFECT_SQUARE, //エフェクトに使用する四角のエフェクト
 	TEXTURE_MAX
 }TEXTURE_LABEL;
 

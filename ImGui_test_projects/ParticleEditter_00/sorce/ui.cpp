@@ -7,6 +7,16 @@
 #include "ui.h"
 #include "effect.h"
 #include "particle.h"
+#include "texture.h"
+
+//==========================================
+//  テクスチャ一覧
+//==========================================
+const char *c_pTextureName[TEXTURE_MAX] =
+{
+	u8"デフォルト", //エフェクトでデフォルトに使うテクスチャ
+	u8"四角形" //エフェクトに使用する四角のテクスチャ
+}; //テクスチャ名
 
 //==========================================
 //  グローバル変数宣言
@@ -112,7 +122,7 @@ void UpdateUi()
 	ImGui::ColorEdit4(u8"初期カラーの設定", g_particle.colStart);
 
 	//テクスチャの設定
-	ImGui::ListBox(u8"テクスチャの設定", &g_particle.effectinfo.nTexPass, c_apTextureName, EFFECTTEX_MAX, EFFECTTEX_MAX);
+	ImGui::ListBox(u8"テクスチャの設定", &g_particle.effectinfo.nTexPass, c_pTextureName, TEXTURE_MAX, TEXTURE_MAX);
 
 	//ループのオンオフ
 	ImGui::Checkbox(u8"ループ", &g_particle.bLoop);

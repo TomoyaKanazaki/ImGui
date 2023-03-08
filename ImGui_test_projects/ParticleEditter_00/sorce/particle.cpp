@@ -7,11 +7,6 @@
 #include "particle.h"
 
 //==========================================
-//  マクロ定義
-//==========================================
-#define MAX_PARTICLE (32) //パーティクル最大数
-
-//==========================================
 //  グローバル変数宣言
 //==========================================
 PARTICLE g_aParticle[MAX_PARTICLE];
@@ -55,27 +50,27 @@ void UpdateParticle()
 				g_aParticle[nCnt].effectinfo.pos = g_aParticle[nCnt].pos;
 
 				//エフェクトの移動量を設定
-				if (g_aParticle[nCnt].move.x != 0) //x
+				if (g_aParticle[nCnt].diffuse.x != 0) //x
 				{
-					g_aParticle[nCnt].effectinfo.move.x = (float)(rand() % (int)(g_aParticle[nCnt].move.x * 2.0f) - g_aParticle[nCnt].move.x);
+					g_aParticle[nCnt].effectinfo.move.x = (float)(rand() % (int)(g_aParticle[nCnt].diffuse.x * 2.0f) - g_aParticle[nCnt].diffuse.x);
 				}
 				else
 				{
 					g_aParticle[nCnt].effectinfo.move.x = 0;
 				}
 
-				if (g_aParticle[nCnt].move.y != 0) //y
+				if (g_aParticle[nCnt].diffuse.y != 0) //y
 				{
-					g_aParticle[nCnt].effectinfo.move.y = (float)(rand() % (int)(g_aParticle[nCnt].move.y * 2.0f) - g_aParticle[nCnt].move.y);
+					g_aParticle[nCnt].effectinfo.move.y = (float)(rand() % (int)(g_aParticle[nCnt].diffuse.y * 2.0f) - g_aParticle[nCnt].diffuse.y);
 				}
 				else
 				{
 					g_aParticle[nCnt].effectinfo.move.y = 0;
 				}
 
-				if (g_aParticle[nCnt].move.z != 0) //z
+				if (g_aParticle[nCnt].diffuse.z != 0) //z
 				{
-					g_aParticle[nCnt].effectinfo.move.z = (float)(rand() % (int)(g_aParticle[nCnt].move.z * 2.0f) - g_aParticle[nCnt].move.z);
+					g_aParticle[nCnt].effectinfo.move.z = (float)(rand() % (int)(g_aParticle[nCnt].diffuse.z * 2.0f) - g_aParticle[nCnt].diffuse.z);
 				}
 				else
 				{
@@ -112,7 +107,10 @@ void UpdateParticle()
 			}
 
 			//寿命を減少
-			g_aParticle[nCnt].nLife--;
+			if (g_aParticle[nCnt].nLife < 0)
+			{
+				g_aParticle[nCnt].nLife--;
+			}
 		}
 	}
 }
@@ -131,7 +129,7 @@ void DrawParticle()
 void SetParticle
 (
 	D3DXVECTOR3 pos,
-	D3DXVECTOR3 move,
+	D3DXVECTOR3 diffuse,
 	D3DXVECTOR3 size,
 	D3DXCOLOR colStart,
 	int nLife,
@@ -151,7 +149,7 @@ void SetParticle
 			g_aParticle[nCnt].pos = pos;
 
 			//移動量の設定
-			g_aParticle[nCnt].move = move;
+			g_aParticle[nCnt].diffuse = diffuse;
 
 			//大きさの設定
 			g_aParticle[nCnt].size = size;
@@ -203,4 +201,12 @@ int GetParticleNum()
 	}
 
 	return nNum;
+}
+
+//==========================================
+//  パーティクル情報の取得
+//==========================================
+PARTICLE *GetParticleData()
+{
+	return &g_aParticle[0];
 }

@@ -10,6 +10,11 @@
 #include "effect.h"
 
 //==========================================
+//  マクロ定義
+//==========================================
+#define MAX_PARTICLE (32) //パーティクル最大数
+
+//==========================================
 //  パーティクル構造体定義
 //==========================================
 typedef struct
@@ -18,6 +23,8 @@ typedef struct
 	D3DXVECTOR3 posError; //発生原点誤差
 	D3DXVECTOR3 move; //移動量
 	D3DXVECTOR3 moveError; //移動量誤差
+	D3DXVECTOR3 diffuse; //拡散量
+	D3DXVECTOR3 diffuseError; //拡散量誤差
 	D3DXVECTOR3 acceleration; //加速度
 	D3DXVECTOR3 accelerationError; //加速度誤差
 	D3DXVECTOR3 size; //ポリゴンサイズ
@@ -49,7 +56,7 @@ void DrawParticle(void);
 void SetParticle
 (
 	D3DXVECTOR3 pos,
-	D3DXVECTOR3 move,
+	D3DXVECTOR3 diffuse,
 	D3DXVECTOR3 size,
 	D3DXCOLOR colStart,
 	int nLife,
@@ -60,5 +67,6 @@ void SetParticle
 	bool bLoop
 );
 int GetParticleNum(void);
+PARTICLE *GetParticleData(void);
 
 #endif

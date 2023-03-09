@@ -53,19 +53,7 @@ void InitParticle(void);
 void UninitParticle(void);
 void UpdateParticle(void);
 void DrawParticle(void);
-void SetParticle
-(
-	D3DXVECTOR3 pos,
-	D3DXVECTOR3 diffuse,
-	D3DXVECTOR3 size,
-	D3DXCOLOR colStart,
-	int nLife,
-	int nEffectLife,
-	int nNumEffect,
-	int nDrawmode,
-	int nTexPass,
-	bool bLoop
-);
+void SetParticle(PARTICLE particledata);
 int GetParticleNum(void);
 PARTICLE *GetParticleData(void);
 

@@ -85,10 +85,6 @@ void DrawEffect()
 	//ライティングを無効化する
 	pDevice->SetRenderState(D3DRS_LIGHTING, FALSE);
 
-	//Zテストの無効化
-	pDevice->SetRenderState(D3DRS_ZFUNC, D3DCMP_ALWAYS);
-	pDevice->SetRenderState(D3DRS_ZWRITEENABLE, FALSE);
-
 	//アルファテストの無効化
 	pDevice->SetRenderState(D3DRS_ALPHATESTENABLE, TRUE);
 	pDevice->SetRenderState(D3DRS_ALPHAFUNC, D3DCMP_GREATER);
@@ -156,10 +152,6 @@ void DrawEffect()
 		pDevice->SetRenderState(D3DRS_ALPHATESTENABLE, FALSE);
 		pDevice->SetRenderState(D3DRS_ALPHAFUNC, D3DCMP_ALWAYS);
 		pDevice->SetRenderState(D3DRS_ALPHAREF, 0);
-
-		//Zテストの有効化
-		pDevice->SetRenderState(D3DRS_ZFUNC, D3DCMP_LESSEQUAL);
-		pDevice->SetRenderState(D3DRS_ZWRITEENABLE, TRUE);
 
 		//アルファブレンディングをの設定を元に戻す
 		pDevice->SetRenderState(D3DRS_BLENDOP, D3DBLENDOP_ADD);

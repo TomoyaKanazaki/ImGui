@@ -33,6 +33,7 @@ void SetDebugWindow(void); //デバッグウィンドウの生成
 //パーティクル管理変数
 PARTICLE g_particle;
 int g_ListItemCurrent;
+bool g_bIndexWindow;
 
 //カメラ管理変数
 D3DXVECTOR3 g_posV; //視点位置
@@ -79,6 +80,7 @@ void InitUi(HWND hWnd)
 	g_particle.nNumEffect = 10;
 	g_particle.effectinfo.nTexPass = TEXTURE_EFFECT_DEFAULT;
 	g_ListItemCurrent = 0;
+	g_bIndexWindow = false;
 
 	//カメラ管理変数
 	g_posV = D3DXVECTOR3(0.0f, 0.0f, 300.0f);
@@ -115,10 +117,6 @@ void UpdateUi()
 
 	//デバッグウィンドウの設定
 	SetDebugWindow();
-
-
-	SetParticleWindowIndex();
-
 
 	//更新の終了
 	ImGui::EndFrame();
@@ -170,6 +168,9 @@ void SetParticleWindowBase()
 	//発生位置の設定
 	ImGui::DragFloat3(u8"発生位置", g_particle.pos);
 
+	//移動量の設定
+	ImGui::DragFloat3(u8"移動量", g_particle.move);
+
 	//拡散の設定
 	ImGui::DragFloat3(u8"拡散角", g_particle.diffuse);
 
@@ -202,19 +203,14 @@ void SetParticleWindowBase()
 	//パーティクルを発生させる
 	if (ImGui::Button("SetParticle"))
 	{
-		SetParticle
-		(
-			g_particle.pos,
-			g_particle.diffuse,
-			g_particle.size,
-			g_particle.colStart,
-			g_particle.nLife,
-			g_particle.nEffectLife,
-			g_particle.nNumEffect,
-			g_particle.nDrawmode,
-			g_particle.effectinfo.nTexPass,
-			g_particle.bLoop
-		);
+		SetParticle(g_particle);
+	} ImGui::SameLine();
+
+	//インデックス指定調整ウィンドウの生成
+	ImGui::Checkbox("Index", &g_bIndexWindow);
+	if(g_bIndexWindow)
+	{
+		SetParticleWindowIndex();
 	}
 
 	//パーティクルウィンドウの終了
@@ -250,6 +246,9 @@ void SetParticleWindowIndex()
 				ImGui::DragFloat3(u8"発生位置", pPraticle->pos);
 
 				//移動量の設定
+				ImGui::DragFloat3(u8"移動量", pPraticle->move);
+
+				//拡散の設定
 				ImGui::DragFloat3(u8"拡散角", pPraticle->diffuse);
 
 				//サイズの設定
@@ -271,7 +270,14 @@ void SetParticleWindowIndex()
 				ImGui::Combo(u8"テクスチャの設定", &pPraticle->effectinfo.nTexPass, c_pTextureName, TEXTURE_MAX, TEXTURE_MAX);
 
 				//ループのオンオフ
-				ImGui::Checkbox(u8"ループ", &pPraticle->bLoop);
+				ImGui::Checkbox(u8"ループ", &pPraticle->bLoop); ImGui::SameLine();
+
+				//パーティクルの削除
+				if (ImGui::Button(u8"消去"))
+				{
+					pPraticle->bLoop = false;
+					pPraticle->bUse = false;
+				}
 
 				//描画モードの設定
 				ImGui::RadioButton(u8"加算合成", &pPraticle->nDrawmode, DRAWMODE_ADD); ImGui::SameLine();
@@ -282,7 +288,12 @@ void SetParticleWindowIndex()
 			else
 			{
 				//不使用状態を表示
-				ImGui::Text(u8"Particle[ %d ] = false", nCntParticle);
+				ImGui::Text(u8"Particle[ %d ] = false", nCntParticle); ImGui::SameLine();
+				//パーティクルを発生させる
+				if (ImGui::Button("SetParticle"))
+				{
+					SetParticle(*pPraticle);
+				}
 			}
 		}
 	}

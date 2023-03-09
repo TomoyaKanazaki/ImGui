@@ -126,54 +126,15 @@ void DrawParticle()
 //==========================================
 //  設定処理
 //==========================================
-void SetParticle
-(
-	D3DXVECTOR3 pos,
-	D3DXVECTOR3 diffuse,
-	D3DXVECTOR3 size,
-	D3DXCOLOR colStart,
-	int nLife,
-	int nEffectLife,
-	int nNumEffect,
-	int nDrawmode,
-	int nTexPass,
-	bool bLoop
-)
+void SetParticle(PARTICLE particledata)
 {
 	//パーティクルの設定
 	for (int nCnt = 0; nCnt < MAX_PARTICLE; nCnt++)
 	{
 		if (g_aParticle[nCnt].bUse == false)
 		{
-			//原点の設定
-			g_aParticle[nCnt].pos = pos;
-
-			//移動量の設定
-			g_aParticle[nCnt].diffuse = diffuse;
-
-			//大きさの設定
-			g_aParticle[nCnt].size = size;
-
-			//初期カラーの設定
-			g_aParticle[nCnt].colStart = colStart;  
-
-			//パーティクル寿命の設定
-			g_aParticle[nCnt].nLife = nLife;
-
-			//エフェクト寿命の設定
-			g_aParticle[nCnt].nEffectLife = nEffectLife;
-
-			//エフェクト発生数の設定
-			g_aParticle[nCnt].nNumEffect = nNumEffect;
-
-			//描画モードの設定
-			g_aParticle[nCnt].nDrawmode = nDrawmode;
-
-			//テクスチャパスの設定
-			g_aParticle[nCnt].effectinfo.nTexPass = nTexPass;
-
-			//ループの設定
-			g_aParticle[nCnt].bLoop = bLoop;
+			//取得した情報を設定
+			g_aParticle[nCnt] = particledata;
 
 			//使用状態を切り替え
 			g_aParticle[nCnt].bUse = true;

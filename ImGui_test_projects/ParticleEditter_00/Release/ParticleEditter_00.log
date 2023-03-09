@@ -1,12 +1,113 @@
 ﻿  camera.cpp
   effect.cpp
+  light.cpp
   main.cpp
+sorce\main.cpp(33): error C4430: 型指定子がありません - int と仮定しました。メモ: C++ は int を既定値としてサポートしていません
+sorce\main.cpp(33): error C2146: 構文エラー: ';' が、識別子 'LRESULT' の前に必要です。
   particle.cpp
+  polygon.cpp
+  texture.cpp
   ui.cpp
-  コード生成しています。
-  57 of 1500 functions ( 3.8%) were compiled, the rest were copied from previous compilation.
-    0 functions were new in current compilation
-    9 functions had inline decision re-evaluated but remain unchanged
-  コード生成が終了しました。
-  ParticleEditter_00.vcxproj -> C:\Users\student\Desktop\Github\imgui\ImGui_test_projects\ParticleEditter_00\ParticleEditter_00.exe
-  ParticleEditter_00.vcxproj -> C:\Users\student\Desktop\Github\imgui\ImGui_test_projects\ParticleEditter_00\ParticleEditter_00.pdb (Full PDB)
+sorce\ui.cpp(50): error C3861: 'IMGUI_CHECKVERSION': 識別子が見つかりませんでした
+sorce\ui.cpp(51): error C2653: 'ImGui': 識別子がクラス名でも名前空間名でもありません。
+sorce\ui.cpp(51): error C3861: 'CreateContext': 識別子が見つかりませんでした
+sorce\ui.cpp(60): error C2065: 'ImGuiIO': 定義されていない識別子です。
+sorce\ui.cpp(60): error C2065: 'io': 定義されていない識別子です。
+sorce\ui.cpp(60): error C2653: 'ImGui': 識別子がクラス名でも名前空間名でもありません。
+sorce\ui.cpp(60): error C3861: 'GetIO': 識別子が見つかりませんでした
+sorce\ui.cpp(63): error C2065: 'io': 定義されていない識別子です。
+sorce\ui.cpp(63): error C2228: '.Fonts' の左側はクラス、構造体、共用体でなければなりません
+  sorce\ui.cpp(63): note: 型は 'unknown-type' です。
+sorce\ui.cpp(63): error C2227: '->AddFontFromFileTTF' : 左側がクラス、構造体、共用体、ジェネリック型へのポインターではありません。
+sorce\ui.cpp(63): error C2227: '->GetGlyphRangesJapanese' : 左側がクラス、構造体、共用体、ジェネリック型へのポインターではありません。
+sorce\ui.cpp(66): error C2653: 'ImGui': 識別子がクラス名でも名前空間名でもありません。
+sorce\ui.cpp(66): error C3861: 'StyleColorsLight': 識別子が見つかりませんでした
+sorce\ui.cpp(69): error C3861: 'ImGui_ImplWin32_Init': 識別子が見つかりませんでした
+sorce\ui.cpp(70): error C3861: 'ImGui_ImplDX9_Init': 識別子が見つかりませんでした
+sorce\ui.cpp(95): error C3861: 'ImGui_ImplDX9_Shutdown': 識別子が見つかりませんでした
+sorce\ui.cpp(96): error C3861: 'ImGui_ImplWin32_Shutdown': 識別子が見つかりませんでした
+sorce\ui.cpp(97): error C2653: 'ImGui': 識別子がクラス名でも名前空間名でもありません。
+sorce\ui.cpp(97): error C3861: 'DestroyContext': 識別子が見つかりませんでした
+sorce\ui.cpp(106): error C3861: 'ImGui_ImplDX9_NewFrame': 識別子が見つかりませんでした
+sorce\ui.cpp(107): error C3861: 'ImGui_ImplWin32_NewFrame': 識別子が見つかりませんでした
+sorce\ui.cpp(108): error C2653: 'ImGui': 識別子がクラス名でも名前空間名でもありません。
+sorce\ui.cpp(108): error C3861: 'NewFrame': 識別子が見つかりませんでした
+sorce\ui.cpp(124): error C2653: 'ImGui': 識別子がクラス名でも名前空間名でもありません。
+sorce\ui.cpp(124): error C3861: 'EndFrame': 識別子が見つかりませんでした
+sorce\ui.cpp(139): error C2653: 'ImGui': 識別子がクラス名でも名前空間名でもありません。
+sorce\ui.cpp(139): error C3861: 'Render': 識別子が見つかりませんでした
+sorce\ui.cpp(140): error C2653: 'ImGui': 識別子がクラス名でも名前空間名でもありません。
+sorce\ui.cpp(140): error C3861: 'GetDrawData': 識別子が見つかりませんでした
+sorce\ui.cpp(140): error C3861: 'ImGui_ImplDX9_RenderDrawData': 識別子が見つかりませんでした
+sorce\ui.cpp(168): error C2653: 'ImGui': 識別子がクラス名でも名前空間名でもありません。
+sorce\ui.cpp(168): error C3861: 'Begin': 識別子が見つかりませんでした
+sorce\ui.cpp(171): error C2653: 'ImGui': 識別子がクラス名でも名前空間名でもありません。
+sorce\ui.cpp(171): error C3861: 'DragFloat3': 識別子が見つかりませんでした
+sorce\ui.cpp(174): error C2653: 'ImGui': 識別子がクラス名でも名前空間名でもありません。
+sorce\ui.cpp(174): error C3861: 'DragFloat3': 識別子が見つかりませんでした
+sorce\ui.cpp(177): error C2653: 'ImGui': 識別子がクラス名でも名前空間名でもありません。
+sorce\ui.cpp(177): error C3861: 'DragFloat3': 識別子が見つかりませんでした
+sorce\ui.cpp(180): error C2653: 'ImGui': 識別子がクラス名でも名前空間名でもありません。
+sorce\ui.cpp(180): error C3861: 'DragFloat3': 識別子が見つかりませんでした
+sorce\ui.cpp(183): error C2653: 'ImGui': 識別子がクラス名でも名前空間名でもありません。
+sorce\ui.cpp(183): error C3861: 'InputInt': 識別子が見つかりませんでした
+sorce\ui.cpp(186): error C2653: 'ImGui': 識別子がクラス名でも名前空間名でもありません。
+sorce\ui.cpp(186): error C3861: 'InputInt': 識別子が見つかりませんでした
+sorce\ui.cpp(189): error C2653: 'ImGui': 識別子がクラス名でも名前空間名でもありません。
+sorce\ui.cpp(189): error C3861: 'InputInt': 識別子が見つかりませんでした
+sorce\ui.cpp(192): error C2653: 'ImGui': 識別子がクラス名でも名前空間名でもありません。
+sorce\ui.cpp(192): error C3861: 'ColorEdit4': 識別子が見つかりませんでした
+sorce\ui.cpp(195): error C2653: 'ImGui': 識別子がクラス名でも名前空間名でもありません。
+sorce\ui.cpp(195): error C3861: 'Combo': 識別子が見つかりませんでした
+sorce\ui.cpp(198): error C2653: 'ImGui': 識別子がクラス名でも名前空間名でもありません。
+sorce\ui.cpp(198): error C3861: 'Checkbox': 識別子が見つかりませんでした
+sorce\ui.cpp(201): error C2653: 'ImGui': 識別子がクラス名でも名前空間名でもありません。
+sorce\ui.cpp(201): error C3861: 'RadioButton': 識別子が見つかりませんでした
+sorce\ui.cpp(201): error C3861: 'SameLine': 識別子が見つかりませんでした
+sorce\ui.cpp(202): error C2653: 'ImGui': 識別子がクラス名でも名前空間名でもありません。
+sorce\ui.cpp(202): error C3861: 'RadioButton': 識別子が見つかりませんでした
+sorce\ui.cpp(202): error C3861: 'SameLine': 識別子が見つかりませんでした
+sorce\ui.cpp(203): error C2653: 'ImGui': 識別子がクラス名でも名前空間名でもありません。
+sorce\ui.cpp(203): error C3861: 'RadioButton': 識別子が見つかりませんでした
+sorce\ui.cpp(206): error C2653: 'ImGui': 識別子がクラス名でも名前空間名でもありません。
+sorce\ui.cpp(206): error C3861: 'Button': 識別子が見つかりませんでした
+sorce\ui.cpp(212): error C2653: 'ImGui': 識別子がクラス名でも名前空間名でもありません。
+sorce\ui.cpp(212): error C3861: 'End': 識別子が見つかりませんでした
+sorce\ui.cpp(224): error C2653: 'ImGui': 識別子がクラス名でも名前空間名でもありません。
+sorce\ui.cpp(224): error C3861: 'Begin': 識別子が見つかりませんでした
+sorce\ui.cpp(233): error C2653: 'ImGui': 識別子がクラス名でも名前空間名でもありません。
+sorce\ui.cpp(233): error C3861: 'CollapsingHeader': 識別子が見つかりませんでした
+sorce\ui.cpp(238): error C2653: 'ImGui': 識別子がクラス名でも名前空間名でもありません。
+sorce\ui.cpp(238): error C3861: 'Text': 識別子が見つかりませんでした
+sorce\ui.cpp(241): error C2653: 'ImGui': 識別子がクラス名でも名前空間名でもありません。
+sorce\ui.cpp(241): error C3861: 'DragFloat3': 識別子が見つかりませんでした
+sorce\ui.cpp(244): error C2653: 'ImGui': 識別子がクラス名でも名前空間名でもありません。
+sorce\ui.cpp(244): error C3861: 'DragFloat3': 識別子が見つかりませんでした
+sorce\ui.cpp(247): error C2653: 'ImGui': 識別子がクラス名でも名前空間名でもありません。
+sorce\ui.cpp(247): error C3861: 'DragFloat3': 識別子が見つかりませんでした
+sorce\ui.cpp(250): error C2653: 'ImGui': 識別子がクラス名でも名前空間名でもありません。
+sorce\ui.cpp(250): error C3861: 'DragFloat3': 識別子が見つかりませんでした
+sorce\ui.cpp(253): error C2653: 'ImGui': 識別子がクラス名でも名前空間名でもありません。
+sorce\ui.cpp(253): error C3861: 'InputInt': 識別子が見つかりませんでした
+sorce\ui.cpp(256): error C2653: 'ImGui': 識別子がクラス名でも名前空間名でもありません。
+sorce\ui.cpp(256): error C3861: 'InputInt': 識別子が見つかりませんでした
+sorce\ui.cpp(259): error C2653: 'ImGui': 識別子がクラス名でも名前空間名でもありません。
+sorce\ui.cpp(259): error C3861: 'InputInt': 識別子が見つかりませんでした
+sorce\ui.cpp(262): error C2653: 'ImGui': 識別子がクラス名でも名前空間名でもありません。
+sorce\ui.cpp(262): error C3861: 'ColorEdit4': 識別子が見つかりませんでした
+sorce\ui.cpp(265): error C2653: 'ImGui': 識別子がクラス名でも名前空間名でもありません。
+sorce\ui.cpp(265): error C3861: 'Combo': 識別子が見つかりませんでした
+sorce\ui.cpp(268): error C2653: 'ImGui': 識別子がクラス名でも名前空間名でもありません。
+sorce\ui.cpp(268): error C3861: 'Button': 識別子が見つかりませんでした
+sorce\ui.cpp(275): error C2653: 'ImGui': 識別子がクラス名でも名前空間名でもありません。
+sorce\ui.cpp(275): error C3861: 'RadioButton': 識別子が見つかりませんでした
+sorce\ui.cpp(275): error C3861: 'SameLine': 識別子が見つかりませんでした
+sorce\ui.cpp(276): error C2653: 'ImGui': 識別子がクラス名でも名前空間名でもありません。
+sorce\ui.cpp(276): error C3861: 'RadioButton': 識別子が見つかりませんでした
+sorce\ui.cpp(276): error C3861: 'SameLine': 識別子が見つかりませんでした
+sorce\ui.cpp(277): error C2653: 'ImGui': 識別子がクラス名でも名前空間名でもありません。
+sorce\ui.cpp(277): error C3861: 'RadioButton': 識別子が見つかりませんでした
+sorce\ui.cpp(283): error C2653: 'ImGui': 識別子がクラス名でも名前空間名でもありません。
+sorce\ui.cpp(283): error C3861: 'Text': 識別子が見つかりませんでした
+sorce\ui.cpp(283): error C3861: 'SameLine': 識別子が見つかりませんでした
+sorce\ui.cpp(283): fatal error C1003: プログラム内のエラーが 100 個を超えました。コンパイルは中断されます。
